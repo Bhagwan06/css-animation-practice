@@ -1,82 +1,13 @@
-/* .animation-box {
-    width: 100px;
-    height: 100px;
-    border: 2px solid black;
-    border-radius: 50%;
-    background-color: red;
-    animation-name: color-change;
-    animation-duration: 10s;
-    animation-delay: 5s;
-    animation-iteration-count: 3;
-}
-
-@keyframes color-change {
-    from {
-        background-color: red;
-        width: 100px;
-        height: 100px;
-    }
-
-    to {
-        background-color: green;
-        width: 500px;
-        height: 500px;
-    }
-}
-
-.text {
-    width: 200px;
-    height: 200px;
-    border: 2px solid blue;
-    animation-name: name-change-multiple;
-    animation-duration: 4s;
-    animation-iteration-count: 4;
-}
-
-@keyframes name-change {
-    from {
-        font-size: 200px;
-
-    }
-
-    to {
-        font-size: 400px;
-    }
-}
-
-@keyframes color-change-multiple {
-    0% {
-        background-color: red;
-    }
-
-    25% {
-        background-color: yellow;
-    }
-
-    50% {
-        background-color: blue;
-    }
-
-    75% {
-        background-color: green;
-    }
-
-    100% {
-        background-color: red;
-    }
-} */
 .container {
     background-color: #ff8c00;
     color: aliceblue;
     width: 80vh;
     height: 80vh;
     border-radius: 10%;
-
     display: flex;
     justify-content: center;
     align-items: center;
-    /* animation: rotate 1s infinite; */
-    /* position: relative; */
+    position: relative; /* Needed for absolute positioning within the container */
 }
 
 .container-2 {
@@ -84,73 +15,55 @@
     width: 300px;
     height: 300px;
     border-radius: 10%;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
-    animation: rotate 1s infinite linear reverse;
-
+    animation: rotate 4s infinite linear reverse;
 }
 
 .ball {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: radial-gradient(white, red);
-
+    background: radial-gradient(white, rgb(77, 76, 76));
     position: absolute;
-    top: 100px;
-    left: 100px;
-    animation: position-change 1s infinite linear;
-    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
-
+    animation: position-change 4s infinite linear;
 }
 
-animatio
+/* Square path keyframes within container */
+@keyframes position-change {
+    0% {
+        top: 10px; /* Top-left corner inside the container */
+        left: 10px;
+    }
+    25% {
+        top: 10px;
+        left: calc(100% - 70px); /* Top-right corner (adjust for ball size) */
+    }
+    50% {
+        top: calc(100% - 70px); /* Bottom-right corner */
+        left: calc(100% - 70px);
+    }
+    75% {
+        top: calc(100% - 70px); /* Bottom-left corner */
+        left: 10px;
+    }
+    100% {
+        top: 10px; /* Returns to top-left corner */
+        left: 10px;
+    }
+}
+
 
 /* animations */
 @keyframes rotate {
     0% {
         transform: rotate(0deg);
-        transform: scale(1);
+        transform: scale(0);
     }
 
     100% {
         transform: rotate(360deg);
-        transform: scale(1.5);
-    }
-}
-
-@keyframes position-change {
-    0% {
-
-        top: 100px;
-        left: 100px;
-        background: radial-gradient(white, red);
-    }
-
-    25% {
-        top: 100px;
-        left: 70vw;
-        background: radial-gradient(white, red);
-    }
-
-    50% {
-        top: 70vh;
-        left: 70vw;
-        background: radial-gradient(white, red);
-    }
-
-    75% {
-        top: 70vh;
-        left: 70vw;
-        background: radial-gradient(white, red);
-    }
-
-    100% {
-        top: 100px;
-        left: 100px;
-        background: radial-gradient(white, red);
+        transform: scale(1.4);
     }
 }
